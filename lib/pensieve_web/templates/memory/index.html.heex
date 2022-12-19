@@ -14,7 +14,7 @@
     <%= for memory <- @memories do %>
       <tr>
         <td><%= memory.title %></td>
-        <td><%= memory.inserted_at %></td>
+        <td><%= memory_inserted_at(memory) %></td>
         <td>
           <%= link "View", to: Routes.memory_path(@conn, :show, memory) %>
           <%= link "Edit", to: Routes.memory_path(@conn, :edit, memory) %>
