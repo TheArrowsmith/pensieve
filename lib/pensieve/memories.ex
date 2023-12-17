@@ -7,6 +7,14 @@ defmodule Pensieve.Memories do
 
   @type id :: pos_integer | binary
 
+  @spec fetch_memory(id) :: {:ok, %Memory{}} | {:error, atom}
+  def fetch_memory(id) do
+    case Repo.get(Memory, id) do
+      %Memory{} = memory -> {:ok, memory}
+      nil -> {:error, :not_found}
+    end
+  end
+
   @spec get_memory!(id) :: %Memory{}
   def get_memory!(id), do: Repo.get!(Memory, id)
 
